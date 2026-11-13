@@ -1,0 +1,730 @@
+/* Dark haunted theme */
+:root {
+  --bg-primary: #12101A;
+  --bg-secondary: #1A1824;
+  --bg-tertiary: #2A2835;
+  --text-primary: #E8E6F0;
+  --text-secondary: #B0ACBC;
+  --text-muted: #8A8694;
+  --accent: #7F5AF0;
+  --accent-light: #A78BFA;
+  --success: #2DD4BF;
+  --danger: #FF6B6B;
+  --warning: #FFD93D;
+  --chart-income: #2DD4BF;
+  --chart-spending: #FF6B6B;
+  --border: #3A3844;
+  --focus-ring: #A78BFA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Header */
+.gl-header {
+  background: linear-gradient(135deg, #1A1824 0%, #2A2835 100%);
+  border-bottom: 2px solid var(--border);
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.gl-header-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--accent-light), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gl-tagline {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gl-badge {
+  display: inline-block;
+  background-color: var(--bg-tertiary);
+  color: var(--accent-light);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  border: 1px solid var(--border);
+}
+
+/* Container & Sections */
+.gl-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.gl-section {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gl-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--accent-light);
+}
+
+/* Import Section */
+.gl-import-section {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+}
+
+.gl-dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgba(127, 90, 240, 0.05);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.gl-dropzone:hover {
+  border-color: var(--accent);
+  background-color: rgba(127, 90, 240, 0.1);
+}
+
+.gl-dropzone.dragover {
+  border-color: var(--accent-light);
+  background-color: rgba(127, 90, 240, 0.15);
+}
+
+.gl-dropzone p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.gl-btn {
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.gl-btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.gl-btn-primary {
+  background-color: var(--accent);
+  color: white;
+}
+
+.gl-btn-primary:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.gl-btn-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.gl-btn-secondary:hover {
+  background-color: var(--border);
+  transform: translateY(-2px);
+}
+
+.gl-btn-danger {
+  background-color: var(--danger);
+  color: white;
+}
+
+.gl-btn-danger:hover {
+  background-color: #ff5252;
+  transform: translateY(-2px);
+}
+
+.gl-btn:active {
+  transform: translateY(0);
+}
+
+/* Inputs & Selects */
+.gl-input,
+.gl-select {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.gl-input:focus,
+.gl-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.1);
+}
+
+.gl-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Action Row */
+.gl-action-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gl-action-row label {
+  color: var(--text-secondary);
+}
+
+/* Import Report */
+.gl-import-report {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: rgba(45, 212, 191, 0.1);
+  border-left: 4px solid var(--success);
+  border-radius: 4px;
+}
+
+.gl-import-success {
+  color: var(--success);
+}
+
+/* Stats Grid */
+.gl-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gl-stat-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.gl-stat-card h3 {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.gl-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin-bottom: 0.5rem;
+}
+
+.gl-stat-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Savings Banner */
+.gl-savings-banner {
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.15) 0%, rgba(127, 90, 240, 0.15) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--success);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.gl-savings-banner p {
+  color: var(--text-primary);
+}
+
+.gl-savings-banner strong {
+  color: var(--success);
+}
+
+/* Ghost List */
+.gl-ghost-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.gl-ghost-card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.gl-ghost-card h3 {
+  color: var(--accent-light);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.gl-ghost-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.gl-tag {
+  display: inline-block;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.gl-tag.likely-ghost {
+  color: var(--warning);
+  border: 1px solid var(--warning);
+}
+
+.gl-tag.price-hike {
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.gl-ghost-details {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.gl-ghost-details p {
+  margin-bottom: 0.3rem;
+}
+
+.gl-ghost-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.gl-exorcise-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gl-exorcise-btn.active {
+  background-color: var(--danger);
+  color: white;
+}
+
+.gl-exorcise-btn:not(.active) {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.gl-exorcise-btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Charts */
+.gl-charts-section canvas {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+.gl-trend-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.gl-trend-table thead {
+  background-color: var(--bg-tertiary);
+}
+
+.gl-trend-table th {
+  padding: 0.8rem;
+  text-align: left;
+  color: var(--accent-light);
+  font-weight: 600;
+  border-bottom: 2px solid var(--border);
+}
+
+.gl-trend-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.gl-trend-table tbody tr:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.gl-category-bars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.gl-category-bar {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.gl-category-bar-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.gl-category-bar-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.gl-category-bar-amount {
+  color: var(--text-secondary);
+}
+
+.gl-bar {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gl-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+}
+
+/* Budgets */
+.gl-budget-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.gl-budget-item {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.gl-budget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.gl-budget-category {
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.gl-budget-edit {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.4rem;
+}
+
+.gl-budget-edit:focus-visible {
+  outline: 1px solid var(--focus-ring);
+}
+
+.gl-budget-amount {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.gl-budget-amount-input {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.3rem 0.5rem;
+  width: 80px;
+  font-size: 0.9rem;
+}
+
+.gl-budget-progress {
+  background-color: var(--bg-primary);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.gl-budget-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--chart-income) 0%, var(--accent) 100%);
+  transition: width 0.3s ease;
+}
+
+.gl-budget-progress-bar.over {
+  background: linear-gradient(90deg, var(--danger) 0%, var(--chart-spending) 100%);
+}
+
+.gl-budget-status {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.gl-budget-status.over {
+  color: var(--danger);
+}
+
+/* Anomalies */
+.gl-anomaly-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.gl-anomaly-item {
+  background-color: var(--bg-tertiary);
+  border-left: 4px solid var(--warning);
+  border-radius: 4px;
+  padding: 1rem;
+  font-size: 0.95rem;
+}
+
+.gl-anomaly-date {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.gl-anomaly-description {
+  color: var(--text-primary);
+  margin: 0.3rem 0;
+}
+
+.gl-anomaly-reason {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* Transactions Section */
+.gl-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.gl-filters > * {
+  flex: 1;
+  min-width: 150px;
+}
+
+.gl-txn-count {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.gl-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.gl-txn-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gl-txn-table thead {
+  background-color: var(--bg-tertiary);
+}
+
+.gl-txn-table th {
+  padding: 0.8rem;
+  text-align: left;
+  color: var(--accent-light);
+  font-weight: 600;
+  border-bottom: 2px solid var(--border);
+}
+
+.gl-txn-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.gl-txn-table tbody tr:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.gl-txn-date {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.gl-txn-description {
+  color: var(--text-primary);
+}
+
+.gl-txn-category {
+  color: var(--text-secondary);
+}
+
+.gl-txn-category-select {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.gl-txn-category-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.gl-txn-amount {
+  text-align: right;
+  font-weight: 600;
+}
+
+.gl-txn-income {
+  color: var(--chart-income);
+}
+
+.gl-txn-spending {
+  color: var(--chart-spending);
+}
+
+/* Data Section */
+.gl-button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+.gl-footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gl-header-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .gl-stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .gl-ghost-list {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-category-bars {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-budget-list {
+    grid-template-columns: 1fr;
+  }
+
+  .gl-filters {
+    flex-direction: column;
+  }
+
+  .gl-filters > * {
+    min-width: auto;
+  }
+
+  .gl-button-group {
+    flex-direction: column;
+  }
+
+  .gl-btn {
+    width: 100%;
+  }
+}
+
+/* Print Friendly */
+@media print {
+  .gl-header,
+  .gl-filters,
+  .gl-button-group,
+  .gl-import-section,
+  .gl-dropzone {
+    display: none;
+  }
+
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  .gl-section {
+    background-color: white;
+    color: black;
+    page-break-inside: avoid;
+  }
+}

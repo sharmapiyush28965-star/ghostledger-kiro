@@ -1,0 +1,1 @@
+{"hooks":[{"command":"node --test","description":"Run the Node test suite whenever a test file is saved, so a broken money calculation is caught immediately. (Bare node --test discovers tests/; node --test tests/ fails on Node 24.)","name":"run-tests-on-save","patterns":["tests/**/*.js","engine.js"],"timeoutMs":60000,"trigger":"PostFileSave"}],"version":1}

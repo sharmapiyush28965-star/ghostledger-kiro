@@ -1,0 +1,1 @@
+{"mcpServers":{"ghostledger-files":{"args":["-y","@modelcontextprotocol/server-filesystem","."],"autoApprove":[],"command":"npx","disabled":false,"env":{}}}}

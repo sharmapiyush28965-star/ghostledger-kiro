@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GhostLedger — Private Offline Budget Tracking</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="gl-header">
+    <div class="gl-header-content">
+      <h1>GhostLedger</h1>
+      <p class="gl-tagline">Mint, the free budgeting app 3.6 million people used, shut down 1 Jan 2024. GhostLedger brings it back as a private offline tracker.</p>
+      <span class="gl-badge">100% offline • 0 network requests</span>
+    </div>
+  </header>
+
+  <main class="gl-container">
+    <!-- Import Section -->
+    <section class="gl-section gl-import-section">
+      <h2>Import Bank Statement</h2>
+      
+      <div id="dropzone" class="gl-dropzone">
+        <p>Drag and drop a CSV file here, or click to browse</p>
+        <input type="file" id="file-input" accept=".csv" style="display: none;">
+        <button id="choose-file" class="gl-btn gl-btn-primary">Choose File</button>
+      </div>
+
+      <div class="gl-action-row">
+        <button id="load-sample" class="gl-btn gl-btn-secondary">Load Sample Data</button>
+        <label for="currency">Currency:</label>
+        <select id="currency" class="gl-select">
+          <option value="$">USD ($)</option>
+          <option value="₹">INR (₹)</option>
+          <option value="€">EUR (€)</option>
+          <option value="£">GBP (£)</option>
+        </select>
+      </div>
+
+      <div id="import-report" class="gl-import-report" style="display: none;">
+        <p class="gl-import-success"></p>
+      </div>
+    </section>
+
+    <!-- Dashboard Stats -->
+    <section class="gl-section gl-stats-section" style="display: none;">
+      <div class="gl-stats-grid">
+        <div class="gl-stat-card">
+          <h3>Income</h3>
+          <div class="gl-stat-value" id="stat-income">$0.00</div>
+          <div class="gl-stat-sub" id="stat-income-sub">0 txns • 0 months</div>
+        </div>
+        <div class="gl-stat-card">
+          <h3>Spending</h3>
+          <div class="gl-stat-value" id="stat-spending">$0.00</div>
+          <div class="gl-stat-sub" id="stat-spending-sub">0 txns • 0 months</div>
+        </div>
+        <div class="gl-stat-card">
+          <h3>Net</h3>
+          <div class="gl-stat-value" id="stat-net">$0.00</div>
+          <div class="gl-stat-sub" id="stat-net-sub">Balance</div>
+        </div>
+        <div class="gl-stat-card">
+          <h3>Recurring</h3>
+          <div class="gl-stat-value" id="stat-ghosts">$0.00</div>
+          <div class="gl-stat-sub" id="stat-ghosts-sub">per month</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Savings Banner -->
+    <div id="savings-banner" class="gl-savings-banner" style="display: none;">
+      <p>By exorcising ghosts, you could save <strong id="savings-amount">$0.00</strong> yearly</p>
+    </div>
+
+    <!-- Ghost Subscriptions -->
+    <section class="gl-section gl-ghosts-section" style="display: none;">
+      <h2>Ghost Subscriptions</h2>
+      <div id="ghost-list" class="gl-ghost-list"></div>
+    </section>
+
+    <!-- Charts -->
+    <section class="gl-section gl-charts-section" style="display: none;">
+      <h2>Monthly Trend</h2>
+      <canvas id="trend-chart" width="800" height="300"></canvas>
+      <table id="trend-table" class="gl-trend-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Income</th>
+            <th>Spending</th>
+            <th>Net</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <h2>Spending by Category</h2>
+      <div id="category-bars" class="gl-category-bars"></div>
+    </section>
+
+    <!-- Budgets -->
+    <section class="gl-section gl-budgets-section" style="display: none;">
+      <h2>Monthly Budgets</h2>
+      <div id="budget-list" class="gl-budget-list"></div>
+    </section>
+
+    <!-- Anomalies -->
+    <section class="gl-section gl-anomalies-section" style="display: none;">
+      <h2>Anomalies</h2>
+      <div id="anomaly-list" class="gl-anomaly-list"></div>
+    </section>
+
+    <!-- Transactions -->
+    <section class="gl-section gl-transactions-section" style="display: none;">
+      <h2>Transactions</h2>
+      
+      <div class="gl-filters">
+        <input type="text" id="txn-search" class="gl-input" placeholder="Search by description or category...">
+        <select id="txn-category" class="gl-select">
+          <option value="">All Categories</option>
+        </select>
+        <select id="txn-sort" class="gl-select">
+          <option value="date-desc">Date (Newest)</option>
+          <option value="date-asc">Date (Oldest)</option>
+          <option value="amount-desc">Amount (Highest)</option>
+          <option value="amount-asc">Amount (Lowest)</option>
+        </select>
+      </div>
+
+      <p class="gl-txn-count"><span id="txn-count">0</span> transactions</p>
+
+      <div class="gl-table-wrapper">
+        <table class="gl-txn-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody id="txn-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Export & Data -->
+    <section class="gl-section gl-data-section" style="display: none;">
+      <h2>Data</h2>
+      <div class="gl-button-group">
+        <button id="export-csv" class="gl-btn gl-btn-secondary">Export as CSV</button>
+        <button id="export-json" class="gl-btn gl-btn-secondary">Export as JSON</button>
+        <button id="clear-data" class="gl-btn gl-btn-danger">Clear All Data</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="gl-footer">
+    <p>GhostLedger is free, open-source, and respects your privacy. Your data never leaves your device.</p>
+  </footer>
+
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
